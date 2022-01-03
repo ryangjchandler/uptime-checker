@@ -16,7 +16,7 @@ class Check extends Model
     protected $casts = [
         'status' => CheckStatus::class,
         'result' => 'array',
-        'completed_at' => 'datetime',
+        'finished_at' => 'datetime',
     ];
 
     public function site()

@@ -29,7 +29,7 @@ class DemoSeeder extends Seeder
 
             $site->checks()->create([
                 'status' => $status,
-                'completed_at' => $status === CheckStatus::Complete || $status === CheckStatus::Failed ? now() : null,
+                'finished_at' => $status === CheckStatus::Complete || $status === CheckStatus::Failed ? now() : null,
             ]);
         }
     }

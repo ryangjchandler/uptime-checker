@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('site_id')->constrained()->cascadeOnDelete();
             $table->string('status')->nullable()->index();
             $table->json('result')->nullable();
-            $table->timestamp('completed_at')->nullable();
+            $table->timestamp('finished_at')->nullable();
             $table->timestamps();
         });
     }

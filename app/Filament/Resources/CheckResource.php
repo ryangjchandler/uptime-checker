@@ -45,11 +45,8 @@ class CheckResource extends Resource
                         'warning' => 'in_progress',
                         'success' => 'complete',
                     ]),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Start Date & Time')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('completed_at')
-                    ->label('End Date & Time')
+                Tables\Columns\TextColumn::make('finished_at')
+                    ->label('Finished')
                     ->dateTime(),
             ])
             ->filters([
