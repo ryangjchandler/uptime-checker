@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\PostResource\RelationManagers\ChecksRelationManager;
 use App\Filament\Resources\SiteResource\Pages;
 use App\Filament\Resources\SiteResource\RelationManagers;
 use App\Models\Site;
@@ -58,7 +59,7 @@ class SiteResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ChecksRelationManager::class,
         ];
     }
 

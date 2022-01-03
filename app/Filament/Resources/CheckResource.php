@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CheckResource\Pages;
 use App\Filament\Resources\CheckResource\RelationManagers;
+use App\Filament\Resources\PostResource\RelationManagers\ChecksRelationManager;
 use App\Models\Check;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -31,7 +32,8 @@ class CheckResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('site.name')
-                    ->url(fn ($record) => SiteResource::getUrl('edit', ['record' => $record->site])),
+                    ->url(fn ($record) => SiteResource::getUrl('edit', ['record' => $record->site]))
+                    ->hidden(fn ($livewire) => $livewire instanceof ChecksRelationManager),
                 Tables\Columns\BadgeColumn::make('status')
                     ->enum([
                         'in_progress' => 'In progress',
