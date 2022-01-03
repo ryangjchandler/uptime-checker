@@ -17,7 +17,7 @@ class RunSiteChecks extends Command
     {
         // Site's that have no checks or where the last check was more than 5 minutes ago.
         $sites = Site::query()
-            // ->requiresCheck()
+            ->requiresCheck()
             ->get();
 
         $this->info("Running checks for {$sites->count()} site(s).");
