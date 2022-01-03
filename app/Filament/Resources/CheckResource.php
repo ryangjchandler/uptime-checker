@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CheckResource\Pages;
+use App\Filament\Resources\CheckResource\Pages\ListChecks;
 use App\Filament\Resources\CheckResource\RelationManagers;
 use App\Filament\Resources\PostResource\RelationManagers\ChecksRelationManager;
 use App\Models\Check;
@@ -11,6 +12,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\LinkAction;
 use Illuminate\Support\HtmlString;
 
 class CheckResource extends Resource
@@ -49,6 +51,11 @@ class CheckResource extends Resource
                     ->label('Finished')
                     ->dateTime(),
             ])
+            ->prependActions([
+                LinkAction::make('View')
+                    ->hidden(fn ($livewire) => $livewire instanceof ListChecks)
+                    ->url(fn ($record) => static::getUrl('view', ['record' => $record])),
+            ])
             ->filters([
                 //
             ]);
@@ -65,8 +72,7 @@ class CheckResource extends Resource
     {
         return [
             'index' => Pages\ListChecks::route('/'),
-            'create' => Pages\CreateCheck::route('/create'),
-            'edit' => Pages\EditCheck::route('/{record}/edit'),
+            'view' => Pages\ViewCheck::route('/{record}'),
         ];
     }
 }
