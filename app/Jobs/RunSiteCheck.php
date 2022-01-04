@@ -29,7 +29,7 @@ class RunSiteCheck implements ShouldQueue
         $result = [];
 
         foreach ($this->site->urls as ['name' => $name, 'url' => $url]) {
-            $response = Http::get($url);
+            $response = Http::head($url);
 
             $result[$name] = match (true) {
                 $response->redirect() => CheckResult::Redirected,
